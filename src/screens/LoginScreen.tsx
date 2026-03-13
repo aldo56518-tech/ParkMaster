@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, KeyboardAvoidingView, Platform } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native';
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from '../firebaseConfig'; // Asegúrate de que la ruta sea correcta
+import { auth } from '../firebaseConfig';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -10,7 +10,7 @@ export default function Login() {
   const handleLogin = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        alert("¡Bienvenido a ParkMaster!");
+        // App.tsx detectará el login automáticamente
       })
       .catch((error) => {
         alert("Error: " + error.message);
@@ -23,14 +23,11 @@ export default function Login() {
       style={styles.container}
     >
       <View style={styles.innerContainer}>
-        {/* Logo similar al ejemplo */}
         <View style={styles.logoCircle}>
           <Text style={{fontSize: 40}}>🅿️</Text> 
         </View>
-
         <Text style={styles.title}>ParkMaster <Text style={styles.blueText}>Pro</Text></Text>
         <Text style={styles.subtitle}>Gestión de Estacionamiento Premium</Text>
-
         <View style={styles.card}>
           <Text style={styles.label}>USUARIO</Text>
           <TextInput 
@@ -39,7 +36,6 @@ export default function Login() {
             placeholderTextColor="#666"
             onChangeText={setEmail}
           />
-
           <Text style={styles.label}>CONTRASEÑA</Text>
           <TextInput 
             style={styles.input} 
@@ -48,7 +44,6 @@ export default function Login() {
             secureTextEntry
             onChangeText={setPassword}
           />
-
           <TouchableOpacity style={styles.button} onPress={handleLogin}>
             <Text style={styles.buttonText}>Iniciar Sesión</Text>
           </TouchableOpacity>
@@ -59,7 +54,7 @@ export default function Login() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#0f172a' }, // Fondo oscuro como el ejemplo
+  container: { flex: 1, backgroundColor: '#0f172a' },
   innerContainer: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 20 },
   logoCircle: { width: 100, height: 100, borderRadius: 50, backgroundColor: '#1e293b', justifyContent: 'center', alignItems: 'center', marginBottom: 20, borderWidth: 1, borderColor: '#3b82f6' },
   title: { fontSize: 28, fontWeight: 'bold', color: '#fff' },
