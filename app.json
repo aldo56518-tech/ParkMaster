@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "1983c9cd-9c78-4690-a9b5-8f52cc095049"
+      }
+    },
+    "android": {
+      "package": "com.tovara.parkmasterdevelopment"
+    }
+  }
+}
